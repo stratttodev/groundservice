@@ -5,8 +5,8 @@ const row2 = [...CLIENTS.slice(3), ...CLIENTS.slice(0, 3), ...CLIENTS.slice(3), 
 const row3 = [...CLIENTS.slice(5), ...CLIENTS.slice(0, 5), ...CLIENTS.slice(5), ...CLIENTS.slice(0, 5)];
 ---
 
-<section id="clientes" class="py-24 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+<section id="clientes" class="py-10 md:py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     <div>
       <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40 mb-3">Confiaron en GS</p>
       <h2 class="font-display font-normal text-4xl md:text-5xl leading-tight text-gs-ink">
@@ -16,7 +16,7 @@ const row3 = [...CLIENTS.slice(5), ...CLIENTS.slice(0, 5), ...CLIENTS.slice(5), 
       </h2>
     </div>
 
-    <div class="space-y-32">
+    <div class="space-y-16 md:space-y-32">
       <div class="relative overflow-hidden">
         <div class="marquee-left flex items-center gap-32 w-max">
           {row1.map((client) => (
@@ -24,7 +24,7 @@ const row3 = [...CLIENTS.slice(5), ...CLIENTS.slice(0, 5), ...CLIENTS.slice(5), 
               <img
                 src={client.logo}
                 alt={client.name}
-                class="h-10 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                class="h-14 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
                 loading="lazy"
               />
             </a>
@@ -41,7 +41,7 @@ const row3 = [...CLIENTS.slice(5), ...CLIENTS.slice(0, 5), ...CLIENTS.slice(5), 
               <img
                 src={client.logo}
                 alt={client.name}
-                class="h-10 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                class="h-14 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
                 loading="lazy"
               />
             </a>
@@ -58,7 +58,7 @@ const row3 = [...CLIENTS.slice(5), ...CLIENTS.slice(0, 5), ...CLIENTS.slice(5), 
               <img
                 src={client.logo}
                 alt={client.name}
-                class="h-10 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                class="h-14 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
                 loading="lazy"
               />
             </a>

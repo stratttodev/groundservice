@@ -10,8 +10,8 @@ import { SERVICES } from "../../lib/constants";
 const iconMap = { logoEquipment, logoMaintenance, logoSupplies, logoRepairs };
 ---
 
-<section id="servicios" class="py-24 bg-white scroll-mt-32">
-  <div class="max-w-7xl mx-auto">
+<section id="servicios" class="py-10 md:py-24 bg-white scroll-mt-32">
+  <div class="max-w-7xl mx-auto px-6">
     <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/30 mb-3">Servicios</p>
 
     <h2 class="font-display font-normal text-4xl md:text-5xl leading-tight text-gs-ink mb-6">
@@ -23,11 +23,11 @@ const iconMap = { logoEquipment, logoMaintenance, logoSupplies, logoRepairs };
       Estructuramos nuestra oferta en 4 divisiones especializadas.
     </p>
 
-    <p class="font-body text-gs-ink/30 max-w-3xl mb-20 leading-relaxed">
+    <p class="font-body text-gs-ink/30 max-w-3xl mb-12 md:mb-20 leading-relaxed">
       Cada unidad opera bajo autonomía técnica y cumplimiento estricto, integrándose según el requerimiento de tu contrato.
     </p>
 
-    <div class="grid grid-cols-1 lg:grid-col gap-6">
+    <div class="grid grid-cols-1 gap-6">
       {SERVICES.map((service) => {
         const Icon = iconMap[service.icon];
         return (
@@ -37,7 +37,7 @@ const iconMap = { logoEquipment, logoMaintenance, logoSupplies, logoRepairs };
             bg={service.bg}
             cta={service.cta}
           >
-            <Icon slot="icon" class="w-80 h-auto" />
+            <Icon slot="icon" class="w-60 md:w-80 lg:w-80 h-auto" />
           </ServiceCard>
         );
       })}

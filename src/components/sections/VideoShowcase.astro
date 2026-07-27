@@ -1,7 +1,7 @@
 ---
 ---
 
-<section class="relative py-24 bg-white overflow-hidden">
+<section class="relative py-10 md:py-24 bg-white overflow-hidden">
   <div class="absolute inset-0 flex items-center pointer-events-none select-none">
     <div class="marquee-text whitespace-nowrap font-display font-normal text-[8rem] md:text-[12rem] text-gs-ink/[0.04]">
       GroundService &middot; Continuidad Operativa &middot; Soporte Técnico &middot; Mantención Preventiva &middot; Disponibilidad Inmediata &middot;&nbsp;
@@ -12,6 +12,7 @@
   <div class="relative z-10 max-w-4xl mx-auto px-6">
     <div class="rounded-2xl overflow-hidden shadow-2xl bg-gs-ink">
       <video
+        id="showcase-video"
         src="/groundService.mp4"
         autoplay
         loop
@@ -35,3 +36,15 @@
     100% { transform: translateX(-50%); }
   }
 </style>
+
+<script>
+  const playVideo = () => {
+    const video = document.getElementById("showcase-video") as HTMLVideoElement;
+    if (video && video.paused) {
+      video.play().catch(() => {});
+    }
+  };
+
+  document.addEventListener("astro:page-load", playVideo);
+  document.addEventListener("astro:after-swap", playVideo);
+</script>

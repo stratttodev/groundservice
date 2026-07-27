@@ -2,19 +2,16 @@
 import { COMPANY } from "../../lib/constants";
 ---
 
-<section class="relative py-24 bg-white overflow-hidden">
+<section class="relative py-16 md:py-24 bg-white overflow-hidden">
   <div class="max-w-7xl mx-auto">
-    <div class="relative bg-gs-ink shadow-2xl rounded-4xl px-8 py-20 md:px-16 md:py-28 overflow-hidden">
-      <div class="absolute inset-0 bg-[url('/groundIso.png')] bg-no-repeat bg-size-[70%] bg-right mix-blend-luminosity opacity-30"></div>
+    <div class="relative bg-gs-ink shadow-2xl rounded-none md:rounded-4xl px-6 py-16 md:px-16 md:py-28 overflow-hidden">
+      <div class="absolute inset-0 bg-[url('/groundIso.png')] bg-no-repeat bg-size-[70%] md:bg-right bg-center mix-blend-luminosity opacity-30"></div>
 
-      <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <h2 class="font-display font-normal text-4xl md:text-6xl leading-tight">
-            <span class="text-white">{COMPANY.name}</span><br />
-            <span class="text-white/60">Elevando el estándar en </span><span class="text-gs-crimson">faena_</span>
-          </h2>
-        </div>
-        <div></div>
+      <div class="relative z-10 text-center md:text-left">
+        <h2 class="font-display font-normal text-3xl md:text-6xl leading-tight">
+          <span class="text-white">{COMPANY.name}</span><br />
+          <span class="text-white/60">Elevando el estándar en </span><span class="text-gs-crimson">faena_</span>
+        </h2>
       </div>
     </div>
   </div>

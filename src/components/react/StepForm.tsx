@@ -119,7 +119,7 @@ export default function StepForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-8 md:p-10 relative overflow-hidden">
+    <div className="bg-white rounded-2xl p-6 md:p-8 lg:p-10 relative overflow-hidden">
       {/* Form Content */}
       <div className={`transition-all duration-500 ease-in-out ${status === "ok" ? "opacity-0 scale-95 pointer-events-none absolute inset-0" : "opacity-100 scale-100"}`}>
         <p className="font-body text-xs uppercase tracking-wider text-gs-ink/30 mb-4">

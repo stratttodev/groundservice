@@ -26,20 +26,20 @@ const tagIcons: Record<string, any> = {
 };
 ---
 
-<div class={`service-card rounded-3xl ${bg} p-8 md:p-16`}>
-  <div class="mb-16">
+<div class={`service-card rounded-3xl ${bg} p-10 md:p-12 lg:p-16`}>
+  <div class="mb-6 md:mb-16">
     <slot name="icon" />
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-    <div class="md:col-span-8">
-      <p class="font-body text-white/70 text-base leading-relaxed mb-10">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+    <div class="md:col-span-7 lg:col-span-8">
+      <p class="font-body text-white/70 text-sm md:text-base leading-relaxed mb-6 md:mb-10">
         {description}
       </p>
       {cta && (
         <a
           href={cta.href}
-          class="inline-flex items-center gap-2 text-2xl font-body text-white/90 hover:text-white transition-colors duration-300"
+          class="inline-flex items-center gap-2 text-lg md:text-2xl font-body text-white/90 hover:text-white transition-colors duration-300"
         >
           {cta.label}
           <ArrowRightUp size={32} />
@@ -47,14 +47,15 @@ const tagIcons: Record<string, any> = {
       )}
     </div>
 
-    <div class="md:col-span-4">
-      <ul class="space-y-4">
+    <div class="md:col-span-5 lg:col-span-4">
+      <ul class="flex flex-wrap md:flex-col gap-2 md:gap-4">
         {tags.map((tag) => {
           const TagIcon = tagIcons[tag];
           return (
-            <li class="flex items-center gap-3 text-white/80 font-body">
-              <span class="flex items-center gap-2 px-5 py-2.5 bg-white rounded-xl text-gs-ink text-base font-display">
-                {TagIcon && <TagIcon size={20} weight="Filled" className="text-gs-ink" />}
+            <li class="flex items-center text-white/80 font-body">
+              <span class="flex items-center gap-1.5 px-3 py-1.5 md:px-5 md:py-2.5 bg-white rounded-lg md:rounded-xl text-gs-ink text-xs md:text-base font-display">
+                {TagIcon && <TagIcon size={16} weight="Filled" className="text-gs-ink md:hidden" />}
+                {TagIcon && <TagIcon size={20} weight="Filled" className="text-gs-ink hidden md:block" />}
                 {tag}
               </span>
             </li>
