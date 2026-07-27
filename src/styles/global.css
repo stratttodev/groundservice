@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "@fontsource-variable/funnel-display";
+@import "@fontsource-variable/inconsolata";
+
+@theme {
+  --color-gs-crimson: #FF073A;
+  --color-gs-ink: #202928;
+  --color-gs-sand: #E2DAD2;
+  --font-display: "Funnel Display Variable", sans-serif;
+  --font-body: "Inconsolata Variable", monospace;
+}
