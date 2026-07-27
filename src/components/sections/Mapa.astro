@@ -1,0 +1,46 @@
+---
+import { MapPoint } from "reicon-react";
+---
+
+<section id="mapa" class="relative h-[500px] bg-gs-ink">
+  <div id="map" class="w-full h-full"></div>
+
+  <a
+    href="https://www.google.com/maps/place/Calama,+Antofagasta,+Chile/@-22.4667,-68.9333,12z"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="absolute bottom-6 right-6 inline-flex items-center gap-2 bg-gs-crimson text-white px-5 py-2.5 font-body text-sm uppercase tracking-wider rounded hover:bg-gs-crimson/90 transition-colors shadow-lg z-10"
+  >
+    <MapPoint size={16} />
+    Cómo llegar
+  </a>
+</section>
+
+<script>
+  import mapboxgl from "mapbox-gl";
+  import "mapbox-gl/dist/mapbox-gl.css";
+
+  const token = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+
+  if (!token) {
+    console.warn("[GroundService] Falta PUBLIC_MAPBOX_TOKEN — mapa no disponible.");
+    const mapEl = document.getElementById("map");
+    if (mapEl) {
+      mapEl.innerHTML = `
+        <div class="w-full h-full flex items-center justify-center bg-gs-ink text-white/30 font-body text-sm">
+          Mapa no disponible — configure PUBLIC_MAPBOX_TOKEN
+        </div>`;
+    }
+  } else {
+    mapboxgl.accessToken = token;
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/dark-v11",
+      center: [-68.9333, -22.4667],
+      zoom: 12,
+    });
+    new mapboxgl.Marker()
+      .setLngLat([-68.9333, -22.4667])
+      .addTo(map);
+  }
+</script>

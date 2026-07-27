@@ -1,0 +1,50 @@
+---
+import { ShieldCheck, Timer, ClipboardList } from "reicon-react";
+import { ABOUT_CARDS } from "../../lib/constants";
+
+const iconMap = { ShieldCheck, Timer, ClipboardList };
+---
+
+<section id="nosotros" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40 mb-4">Nosotros</p>
+
+    <h2 class="font-display font-bold text-4xl md:text-5xl leading-tight mb-4">
+      Ingeniería aplicada<br />
+      a la <span class="text-gs-crimson">continuidad_</span> en terreno
+    </h2>
+
+    <p class="font-body text-gs-ink/70 text-lg max-w-2xl mb-4">
+      En GS elevamos el estándar operativo de la gran minería e industria.
+    </p>
+
+    <p class="font-body text-gs-ink/50 max-w-3xl mb-16 leading-relaxed">
+      Nos posicionamos en el norte de Chile como un partner estratégico dedicado a la certeza técnica:
+      transformamos la mantención y el soporte en un sistema de precisión, seguridad y cumplimiento normativo estricto.
+      No solo intervenimos equipos; garantizamos que la operación no se detenga.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {ABOUT_CARDS.map((card) => {
+        const Icon = iconMap[card.icon];
+        return (
+          <div class={`rounded-xl p-8 ${card.bg} ${card.textColor}`}>
+            <Icon size={32} className="mb-6" />
+            <h3 class="font-display font-bold text-xl mb-4">{card.title}</h3>
+            <div class="flex flex-wrap gap-2">
+              {card.tags.map((tag) => (
+                <span class={`text-xs font-body uppercase tracking-wider px-3 py-1 rounded-full border ${
+                  card.textColor === "text-white"
+                    ? "border-white/30 text-white/80"
+                    : "border-gs-ink/10 text-gs-ink/50"
+                }`}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

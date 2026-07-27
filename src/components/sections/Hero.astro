@@ -1,0 +1,31 @@
+---
+import { COMPANY } from "../../lib/constants";
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-gs-ink via-gs-ink/90 to-gs-crimson/60"></div>
+  <!-- TODO: foto real en src/assets/images/hero/ -->
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <span class="inline-block border border-gs-crimson/40 text-gs-crimson text-xs font-body uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-8">
+      &bull; Estándar Norte &middot; Calama, Chile
+    </span>
+
+    <h1 class="font-display font-bold text-5xl md:text-7xl leading-[1.05] mb-6">
+      <span class="text-gs-crimson">Continuidad operativa</span><br />
+      <span class="text-white">y soporte técnico</span><br />
+      <span class="text-white">en faena.</span>
+    </h1>
+
+    <p class="text-white/60 font-body text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+      {COMPANY.description}
+    </p>
+
+    <div class="flex flex-col items-center gap-2 text-white/30 font-body text-xs uppercase tracking-[0.15em]">
+      <span>Sigue bajando para más info.</span>
+      <svg class="animate-bounce" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+</section>

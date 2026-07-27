@@ -1,0 +1,33 @@
+---
+import { CLIENTS } from "../../lib/constants";
+const items = [...CLIENTS, ...CLIENTS, ...CLIENTS];
+---
+
+<section id="clientes" class="py-16 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 mb-8">
+    <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40">Confiaron en GS</p>
+  </div>
+
+  <div class="relative">
+    <div class="marquee flex gap-12 items-center whitespace-nowrap">
+      {items.map((client) => (
+        <span class="font-display text-2xl md:text-3xl text-gs-ink/15 shrink-0 select-none">
+          {client}
+        </span>
+      ))}
+    </div>
+
+    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+  </div>
+</section>
+
+<style>
+  .marquee {
+    animation: scroll 25s linear infinite;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+</style>
