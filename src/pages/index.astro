@@ -3,31 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/sections/Hero.astro";
-import Test from "../components/sections/Test.astro";
-import ClientesCarousel from "../components/sections/ClientesCarousel.astro";
-import VideoShowcase from "../components/sections/VideoShowcase.astro";
-import Nosotros from "../components/sections/Nosotros.astro";
-import Separator from "../components/sections/Separator.astro";
-import Servicios from "../components/sections/Servicios.astro";
-import Contacto from "../components/sections/Contacto.astro";
-import Mapa from "../components/sections/Mapa.astro";
 import { COMPANY } from "../lib/constants";
 ---
 
 <Layout title={`${COMPANY.name} — Servicios de Minería`}>
-  <Navbar />
-  <main>
-    <Hero />
-    <Test />
-    <ClientesCarousel />
-    <VideoShowcase />
-    <Nosotros />
-    <Separator />
-    <Servicios />
-    <Contacto />
-    <div class="relative">
-      <Mapa />
-      <Footer overlay />
-    </div>
-  </main>
+  <div class="relative h-screen overflow-hidden">
+    <Navbar />
+    <main class="h-full">
+      <Hero />
+    </main>
+    <Footer />
+  </div>
 </Layout>

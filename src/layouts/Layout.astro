@@ -9,7 +9,7 @@ import ClientRouter from "astro/components/ClientRouter.astro";
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="bg-transparent">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,12 +19,7 @@ import ClientRouter from "astro/components/ClientRouter.astro";
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="font-body bg-white text-gs-ink">
+  <body class="font-body text-gs-ink h-screen overflow-hidden">
     <slot />
-    <script>
-      document.addEventListener("astro:after-swap", () => {
-        window.scrollTo(0, 0);
-      });
-    </script>
   </body>
 </html>

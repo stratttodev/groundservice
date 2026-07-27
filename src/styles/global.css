@@ -10,6 +10,10 @@
   --font-body: "Inconsolata Variable", monospace;
 }
 
+html, body {
+  background: transparent !important;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

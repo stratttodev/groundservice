@@ -1,38 +1,35 @@
 ---
-import { ArrowDown } from "reicon-react";
+import { VectorSquare } from "reicon-react";
 import HeroShape01 from "../icons/heroShape01.astro";
 import HeroShape02 from "../icons/heroShape02.astro";
 ---
 
-<section id="hero" class="relative min-h-screen flex flex-col justify-between overflow-hidden bg-linear-to-b from-red-100 to-white">
-  <HeroShape01 class="absolute -top-10 -left-20 h-auto" />
-  <HeroShape02 class="absolute -bottom-10 -right-30 h-auto" />
+<section id="hero" class="relative h-full flex flex-col justify-center overflow-hidden">
+  <video
+    src="/groundHeroBg.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="metadata"
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+  </video>
+  <div class="absolute inset-0 bg-gs-ink/30"></div>
 
-  <div class="relative z-10 max-w-8xl mx-auto px-6 pt-32 w-full flex-1 flex items-center">
+  <HeroShape01 class="absolute -top-10 -left-20 h-auto z-10 mix-blend-screen opacity-40" />
+  <HeroShape02 class="absolute -bottom-10 -right-30 h-auto z-10 mix-blend-screen opacity-40" />
+
+  <div class="relative z-10 max-w-8xl mx-auto px-6 w-full flex-1 flex items-center">
     <div class="w-full">
+      <span class="flex md:hidden font-body text-sm uppercase tracking-[0.2em] text-white bg-gs-crimson rounded-full px-4 py-2 items-center gap-2 mb-6 justify-center">
+        <VectorSquare size={24} weight="Filled" />
+        Sitio en construcción
+      </span>
       <h1 class="font-display font-normal leading-[0.85]">
-        <span class="block text-center md:text-left md:absolute md:left-0 md:top-60 text-gs-ink text-[6rem] sm:text-[6rem] md:text-[12rem] lg:text-[16rem]">Ground</span>
-        <span class="block text-center md:text-left md:absolute md:right-0 md:bottom-40 text-gs-ink text-[6rem] sm:text-[6rem] md:text-[12rem] lg:text-[16rem] mt-8 md:mt-0">Service</span>
+        <span class="block text-center md:text-left md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 text-white text-[5rem] sm:text-[6rem] md:text-[12rem] lg:text-[16rem]">Ground</span>
+        <span class="block text-center md:text-left md:absolute md:right-0 md:top-1/2 md:translate-y-[20%] text-white text-[5rem] sm:text-[6rem] md:text-[12rem] lg:text-[16rem] mt-8 md:mt-0">Service</span>
       </h1>
     </div>
   </div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
-    <div class="flex flex-col items-center gap-3">
-      <div class="w-12 h-12 rounded-full border border-gs-ink/20 flex items-center justify-center animate-bounce">
-        <ArrowDown size={20} className="text-gs-ink" />
-      </div>
-      <span class="text-gs-ink/40 text-sm font-body">Scrollear para saber más</span>
-    </div>
-  </div>
 </section>
-
-<style>
-  .animate-bounce {
-    animation: bounce 2s infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-</style>
