@@ -1,43 +1,87 @@
-# Astro Starter Kit: Minimal
+# GroundService — Landing Institucional
 
-```sh
-pnpm create astro@latest -- --template minimal
+Landing page institucional para **GroundService**, servicios de mantención y soporte técnico para minería en el norte de Chile.
+
+## Stack
+
+| Capa | Tecnología |
+| --- | --- |
+| Framework | [Astro](https://astro.build) (modo SSR/SSG) |
+| UI Islands | React 19 + TypeScript strict |
+| Estilos | [Tailwind CSS v4](https://tailwindcss.com) (plugin Vite nativo) |
+| Despliegue | [Vercel](https://vercel.com) (Node serverless) |
+| Paquetería | [pnpm](https://pnpm.io) |
+| Email | [React Email](https://react.email) + [Resend](https://resend.com) |
+| Mapas | [Mapbox GL JS](https://www.mapbox.com/mapbox-gljs) |
+
+## Estructura del proyecto
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
+groundservice/
+├── public/                         # Assets estáticos (favicon, etc.)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── hero/               # Foto hero (placeholder)
+│   │   │   └── clientes/           # Logos SVG clientes (placeholder)
+│   │   └── textures/               # Texturas separator (placeholder)
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.astro
+│   │   │   └── Footer.astro
+│   │   ├── sections/
+│   │   │   ├── Hero.astro
+│   │   │   ├── ClientesCarousel.astro
+│   │   │   ├── Nosotros.astro
+│   │   │   ├── Separator.astro
+│   │   │   ├── Servicios.astro
+│   │   │   ├── Contacto.astro
+│   │   │   └── Mapa.astro
+│   │   └── react/
+│   │       └── StepForm.tsx         # Isla interactiva (client:load)
+│   ├── emails/
+│   │   ├── InstitutionalTemplate.tsx
+│   │   └── ContactNotification.tsx
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── lib/
+│   │   └── constants.ts             # Datos de cards, contacto, etc.
+│   ├── pages/
+│   │   ├── index.astro
+│   │   └── api/
+│   │       └── contact.ts           # Endpoint formulario (Resend)
+│   └── styles/
+│       └── global.css               # Tailwind v4 + @theme tokens
+├── .env.example
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Comandos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Comando | Descripción |
+| --- | --- |
+| `pnpm install` | Instalar dependencias |
+| `pnpm dev` | Servidor local en `localhost:4321` |
+| `pnpm build` | Build de producción en `./dist/` |
+| `pnpm preview` | Preview del build local |
+| `pnpm astro check` | Validación TypeScript |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Variables de entorno
 
-## 🧞 Commands
+Copiar `.env.example` a `.env` y completar:
 
-All commands are run from the root of the project, from a terminal:
+```env
+RESEND_API_KEY=          # API key de Resend
+CONTACT_EMAIL_TO=        # Email destino para notificaciones
+PUBLIC_MAPBOX_TOKEN=     # Token público de Mapbox
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## Despliegue
 
-## 👀 Want to learn more?
+Proyecto configurado para Vercel (Node serverless). El deploy se realiza automáticamente al hacer push a la rama `main`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+Desarrollado by [Stratto](https://stratto.dev)
