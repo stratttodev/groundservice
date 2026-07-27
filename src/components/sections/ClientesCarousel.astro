@@ -9,11 +9,14 @@ const items = [...CLIENTS, ...CLIENTS, ...CLIENTS];
   </div>
 
   <div class="relative">
-    <div class="marquee flex gap-12 items-center whitespace-nowrap">
+    <div class="marquee flex gap-12 items-center">
       {items.map((client) => (
-        <span class="font-display text-2xl md:text-3xl text-gs-ink/15 shrink-0 select-none">
-          {client}
-        </span>
+        <img
+          src={client.logo}
+          alt={client.name}
+          class="h-10 md:h-14 object-contain shrink-0 opacity-40 hover:opacity-70 transition-opacity"
+          loading="lazy"
+        />
       ))}
     </div>
 
@@ -24,7 +27,7 @@ const items = [...CLIENTS, ...CLIENTS, ...CLIENTS];
 
 <style>
   .marquee {
-    animation: scroll 25s linear infinite;
+    animation: scroll 30s linear infinite;
   }
   @keyframes scroll {
     0% { transform: translateX(0); }

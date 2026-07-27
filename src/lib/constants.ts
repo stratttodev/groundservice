@@ -21,10 +21,15 @@ export const NAV_LINKS = [
 ] as const;
 
 export const CLIENTS = [
-  "AVA",
-  "CODELCO",
-  "I. Municipalidad María Elena",
-  "Salfa",
+  { name: "AVA", logo: "/src/assets/logos/logoAVA.png" },
+  { name: "CODELCO", logo: "/src/assets/logos/logoCodelco.png" },
+  { name: "Municipalidad María Elena", logo: "/src/assets/logos/logoMElena.png" },
+  { name: "Salfa", logo: "/src/assets/logos/logoSalfa.png" },
+  { name: "Chier", logo: "/src/assets/logos/logoChier.png" },
+  { name: "Derk", logo: "/src/assets/logos/logoDerk.png" },
+  { name: "HC", logo: "/src/assets/logos/logoHC.png" },
+  { name: "Inducal", logo: "/src/assets/logos/logoInducal.png" },
+  { name: "Polpaico", logo: "/src/assets/logos/logoPolpaico.png" },
 ] as const;
 
 export const ABOUT_CARDS = [
