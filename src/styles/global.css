@@ -9,3 +9,71 @@
   --font-display: "Funnel Display Variable", sans-serif;
   --font-body: "Inconsolata Variable", monospace;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #202928 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-left {
+  opacity: 0;
+}
+
+.animate-fade-left.is-visible {
+  animation: fade-in-left 0.6s ease-out forwards;
+}
+
+.animate-fade-right {
+  opacity: 0;
+}
+
+.animate-fade-right.is-visible {
+  animation: fade-in-right 0.6s ease-out forwards;
+}

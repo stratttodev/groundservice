@@ -1,63 +1,157 @@
 ---
-import { Message } from "reicon-react";
+import { ChatLine } from "reicon-react";
 import { NAV_LINKS, COMPANY } from "../../lib/constants";
+import Isotype from "../ui/Isotype.astro";
+
+const currentPath = Astro.url.pathname;
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-gs-ink/90 backdrop-blur-sm border-b border-white/10">
-  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-full bg-gs-crimson flex items-center justify-center">
-        <span class="text-white font-display font-bold text-sm">GS</span>
-      </div>
-      <span class="font-display font-bold text-white text-lg">{COMPANY.name}</span>
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+  <div id="nav-container" class="max-w-7xl mx-auto py-16 px-6 flex items-center justify-between transition-all duration-300">
+    <a href="/" class="flex items-center gap-2" transition:name="logo" transition:animate="slide">
+      <Isotype id="nav-isotype" class="w-12 h-12 text-gs-crimson transition-all duration-300" transition:name="logo-isotype" transition:animate="slide" />
+      <span id="nav-name" class="font-display font-normal text-gs-ink text-3xl transition-all duration-300" transition:name="logo-text" transition:animate="slide">{COMPANY.name}</span>
     </a>
 
     <div class="hidden md:flex items-center gap-8">
-      {NAV_LINKS.map((link) => (
+      {NAV_LINKS.map((link) => {
+        const isContactoOnContacto = currentPath === "/contacto" && link.href === "#contacto";
+        return (
+          <a
+            href={isContactoOnContacto ? "/" : link.href}
+            class:list={[
+              "text-sm font-body uppercase tracking-widest transition-colors",
+              currentPath === "/" && link.href === "#contacto"
+                ? "text-gs-ink font-semibold"
+                : currentPath === "/contacto" && link.label === "Contacto"
+                  ? "text-gs-ink font-semibold"
+                  : "text-gs-ink/60 hover:text-gs-ink",
+            ]}
+            data-nav-link={link.href.replace("#", "")}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+      {currentPath === "/" && (
         <a
-          href={link.href}
-          class="text-sm font-body uppercase tracking-widest text-white/60 hover:text-white transition-colors"
+          href="#contacto"
+          class="inline-flex items-center gap-2 bg-gs-crimson text-white px-6 py-3 text-sm font-display uppercase tracking-wider rounded-lg hover:bg-gs-crimson/90 transition-colors"
         >
-          {link.label}
+          <ChatLine size={24} weight="Filled" />
+          Conversemos!
         </a>
-      ))}
-      <a
-        href="#contacto"
-        class="inline-flex items-center gap-2 bg-gs-crimson text-white px-5 py-2 text-sm font-body uppercase tracking-wider rounded hover:bg-gs-crimson/90 transition-colors"
-      >
-        Conversemos
-        <Message size={16} />
-      </a>
+      )}
     </div>
 
-    <button id="menu-toggle" class="md:hidden text-white" aria-label="Menú">
+    <button id="menu-toggle" class="md:hidden text-gs-ink" aria-label="Menú">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M3 12h18M3 6h18M3 18h18" />
       </svg>
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden bg-gs-ink border-t border-white/10 px-6 py-4">
-    {NAV_LINKS.map((link) => (
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gs-ink/10 px-6 py-4">
+    {NAV_LINKS.map((link) => {
+      const isContactoOnContacto = currentPath === "/contacto" && link.href === "#contacto";
+      return (
+        <a
+          href={isContactoOnContacto ? "/" : link.href}
+          class:list={[
+            "block py-2 text-sm font-body uppercase tracking-widest transition-colors",
+            currentPath === "/" && link.href === "#contacto"
+              ? "text-gs-ink font-semibold"
+              : currentPath === "/contacto" && link.label === "Contacto"
+                ? "text-gs-ink font-semibold"
+                : "text-gs-ink/60 hover:text-gs-ink",
+          ]}
+          data-nav-link={link.href.replace("#", "")}
+        >
+          {link.label}
+        </a>
+      );
+    })}
+    {currentPath === "/" && (
       <a
-        href={link.href}
-        class="block py-2 text-sm font-body uppercase tracking-widest text-white/60 hover:text-white transition-colors"
+        href="#contacto"
+        class="mt-3 inline-flex items-center gap-2 bg-gs-crimson text-white px-5 py-2 text-sm font-body uppercase tracking-wider rounded"
       >
-        {link.label}
+        Conversemos
+        <ChatLine size={24} weight="Filled" />
       </a>
-    ))}
-    <a
-      href="#contacto"
-      class="mt-3 inline-flex items-center gap-2 bg-gs-crimson text-white px-5 py-2 text-sm font-body uppercase tracking-wider rounded"
-    >
-      Conversemos
-      <Message size={16} />
-    </a>
+    )}
   </div>
 </nav>
 
 <script>
-  const toggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("mobile-menu");
-  toggle?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+  const setupNavbar = () => {
+    const navbar = document.getElementById("navbar");
+    const container = document.getElementById("nav-container");
+    const isotype = document.getElementById("nav-isotype");
+    const name = document.getElementById("nav-name");
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+
+    toggle?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+
+    const applyScrollState = () => {
+      if (window.scrollY > 50) {
+        navbar?.classList.add("bg-white", "shadow-xs");
+        navbar?.classList.remove("bg-transparent");
+        container?.classList.add("py-8");
+        container?.classList.remove("py-16");
+        isotype?.classList.add("w-10", "h-10");
+        isotype?.classList.remove("w-12", "h-12");
+        name?.classList.add("text-2xl");
+        name?.classList.remove("text-3xl");
+      } else {
+        navbar?.classList.remove("bg-white", "shadow-xs");
+        navbar?.classList.add("bg-transparent");
+        container?.classList.remove("py-8");
+        container?.classList.add("py-16");
+        isotype?.classList.remove("w-10", "h-10");
+        isotype?.classList.add("w-12", "h-12");
+        name?.classList.remove("text-2xl");
+        name?.classList.add("text-3xl");
+      }
+    };
+
+    applyScrollState();
+    window.removeEventListener("scroll", applyScrollState);
+    window.addEventListener("scroll", applyScrollState);
+
+    const sections = ["manifesto", "nosotros", "servicios", "contacto"];
+    const isIndex = window.location.pathname === "/";
+
+    if (isIndex) {
+      const links = document.querySelectorAll("[data-nav-link]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              links.forEach((link) => {
+                if (link.getAttribute("data-nav-link") === id) {
+                  link.classList.add("font-semibold", "text-gs-ink");
+                  link.classList.remove("text-gs-ink/60");
+                } else {
+                  link.classList.remove("font-semibold", "text-gs-ink");
+                  link.classList.add("text-gs-ink/60");
+                }
+              });
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }
+  };
+
+  setupNavbar();
+  document.addEventListener("astro:after-swap", setupNavbar);
 </script>

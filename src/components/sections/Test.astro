@@ -1,0 +1,50 @@
+---
+import { Widget5, TwentyFourHourSupport, ShieldCheck } from "reicon-react";
+---
+
+<section id="manifesto" class="py-24 bg-white scroll-mt-32">
+  <div class="max-w-7xl mx-auto py-24">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+      <div class="md:col-span-8">
+        <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/30 mb-3">Manifesto</p>
+
+        <h2 class="font-display font-normal text-3xl md:text-8xl leading-tight text-gs-ink mb-8">
+          El <span class="text-gs-crimson">estándar_</span> que<br />
+          la faena exige.
+        </h2>
+
+        <p class="font-body text-gs-ink/60 text-lg leading-relaxed mb-4">
+          Desde Calama, mantenemos, reparamos e implementamos los estándares de seguridad que la operación de maquinaria industrial y equipos livianos exige en minería e industria.
+        </p>
+
+        <p class="font-body text-gs-ink/40 text-base leading-relaxed">
+          Cada minuto de inactividad es toneladas perdidas. Por eso existimos: para que la maquinaria nunca sea el límite.
+        </p>
+      </div>
+
+      <div class="md:col-span-4 flex flex-col justify-end gap-10">
+        <div class="flex items-center gap-5">
+          <Widget5 size={40} className="text-gs-crimson shrink-0" weight="Filled" />
+          <div>
+            <span class="block font-display font-normal text-4xl text-gs-ink mb-1">4+</span>
+            <span class="text-gs-ink/40 text-sm font-body">Divisiones especializadas</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-5">
+          <TwentyFourHourSupport size={40} className="text-gs-crimson shrink-0" weight="Filled" />
+          <div>
+            <span class="block font-display font-normal text-4xl text-gs-ink mb-1">24/7</span>
+            <span class="text-gs-ink/40 text-sm font-body">Soporte en ruta</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-5">
+          <ShieldCheck size={40} className="text-gs-crimson shrink-0" weight="Filled" />
+          <div>
+            <span class="block font-display font-normal text-4xl text-gs-ink mb-1">100%</span>
+            <span class="text-gs-ink/40 text-sm font-body">Cumplimiento normativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

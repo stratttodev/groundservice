@@ -1,36 +1,93 @@
 ---
 import { CLIENTS } from "../../lib/constants";
-const items = [...CLIENTS, ...CLIENTS, ...CLIENTS];
+const row1 = [...CLIENTS, ...CLIENTS];
+const row2 = [...CLIENTS.slice(3), ...CLIENTS.slice(0, 3), ...CLIENTS.slice(3), ...CLIENTS.slice(0, 3)];
+const row3 = [...CLIENTS.slice(5), ...CLIENTS.slice(0, 5), ...CLIENTS.slice(5), ...CLIENTS.slice(0, 5)];
 ---
 
-<section id="clientes" class="py-16 bg-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 mb-8">
-    <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40">Confiaron en GS</p>
-  </div>
-
-  <div class="relative">
-    <div class="marquee flex gap-12 items-center">
-      {items.map((client) => (
-        <img
-          src={client.logo}
-          alt={client.name}
-          class="h-10 md:h-14 object-contain shrink-0 opacity-40 hover:opacity-70 transition-opacity"
-          loading="lazy"
-        />
-      ))}
+<section id="clientes" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40 mb-3">Confiaron en GS</p>
+      <h2 class="font-display font-normal text-4xl md:text-5xl leading-tight text-gs-ink">
+        Empresas que<br />
+        confían en<br />
+        nuestro trabajo
+      </h2>
     </div>
 
-    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+    <div class="space-y-32">
+      <div class="relative overflow-hidden">
+        <div class="marquee-left flex items-center gap-32 w-max">
+          {row1.map((client) => (
+            <a href={client.url} target="_blank" rel="noopener noreferrer" class="shrink-0">
+              <img
+                src={client.logo}
+                alt={client.name}
+                class="h-10 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                loading="lazy"
+              />
+            </a>
+          ))}
+        </div>
+        <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+      </div>
+
+      <div class="relative overflow-hidden">
+        <div class="marquee-right flex items-center gap-32 w-max">
+          {row2.map((client) => (
+            <a href={client.url} target="_blank" rel="noopener noreferrer" class="shrink-0">
+              <img
+                src={client.logo}
+                alt={client.name}
+                class="h-10 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                loading="lazy"
+              />
+            </a>
+          ))}
+        </div>
+        <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+      </div>
+
+      <div class="relative overflow-hidden">
+        <div class="marquee-left flex items-center gap-32 w-max">
+          {row3.map((client) => (
+            <a href={client.url} target="_blank" rel="noopener noreferrer" class="shrink-0">
+              <img
+                src={client.logo}
+                alt={client.name}
+                class="h-10 md:h-12 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                loading="lazy"
+              />
+            </a>
+          ))}
+        </div>
+        <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-  .marquee {
-    animation: scroll 30s linear infinite;
+  .marquee-left {
+    animation: scroll-left 50s linear infinite;
   }
-  @keyframes scroll {
+  .marquee-right {
+    animation: scroll-right 50s linear infinite;
+  }
+  .marquee-left:hover,
+  .marquee-right:hover {
+    animation-play-state: paused;
+  }
+  @keyframes scroll-left {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-33.333%); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
   }
 </style>

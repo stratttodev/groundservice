@@ -1,55 +1,65 @@
 ---
-import { Location, Call, Envelope, Clock } from "reicon-react";
+import { Location, Call, Envelope, Clock, Send } from "reicon-react";
 import { CONTACT } from "../../lib/constants";
-import StepForm from "../react/StepForm.tsx";
 ---
 
-<section id="contacto" class="py-24 bg-gs-sand">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-    <div>
-      <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40 mb-4">Contacto</p>
+<section id="contacto" class="py-24 bg-gs-sand scroll-mt-32">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16">
+      <div>
+        <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40 mb-4">Contacto</p>
 
-      <div class="space-y-8">
-        <div>
-          <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
-            <Location size={14} /> Ubicación Central
-          </h3>
-          <p class="font-body text-gs-ink/70">{CONTACT.address}</p>
-        </div>
+        <div class="space-y-8">
+          <div transition:name="contact-location" transition:animate="slide">
+            <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
+              <Location size={14} /> Ubicación Central
+            </h3>
+            <p class="font-body text-gs-ink/70">{CONTACT.address}</p>
+          </div>
 
-        <div>
-          <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
-            <Call size={14} /> Central & Emergencia Faena
-          </h3>
-          <div class="font-body text-gs-ink/70 space-y-1">
-            {CONTACT.phones.map((phone) => (
-              <p>{phone}</p>
-            ))}
+          <div transition:name="contact-phones" transition:animate="slide">
+            <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
+              <Call size={14} /> Central & Emergencia Faena
+            </h3>
+            <div class="font-body text-gs-ink/70 space-y-1">
+              {CONTACT.phones.map((phone) => (
+                <p>{phone}</p>
+              ))}
+            </div>
+          </div>
+
+          <div transition:name="contact-email" transition:animate="slide">
+            <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
+              <Envelope size={14} /> Licitaciones y Cotizaciones
+            </h3>
+            <p class="font-body text-gs-ink/70">{CONTACT.email}</p>
+          </div>
+
+          <div transition:name="contact-hours" transition:animate="slide">
+            <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
+              <Clock size={14} /> Cobertura Operativa
+            </h3>
+            <p class="font-body text-gs-ink/70">{CONTACT.hours}</p>
           </div>
         </div>
-
-        <div>
-          <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
-            <Envelope size={14} /> Licitaciones y Cotizaciones
-          </h3>
-          <p class="font-body text-gs-ink/70">{CONTACT.email}</p>
-        </div>
-
-        <div>
-          <h3 class="font-body text-xs uppercase tracking-[0.15em] text-gs-ink/40 mb-2 flex items-center gap-2">
-            <Clock size={14} /> Cobertura Operativa
-          </h3>
-          <p class="font-body text-gs-ink/70">{CONTACT.hours}</p>
-        </div>
       </div>
-    </div>
 
-    <div>
-      <h2 class="font-display font-bold text-4xl md:text-5xl leading-tight mb-6">
-        Cotizamos<br />
-        <span class="text-gs-crimson">tu proyecto_</span>
-      </h2>
-      <StepForm client:load />
+      <div class="flex flex-col justify-end">
+        <h2 class="font-display font-normal text-4xl md:text-7xl leading-tight mb-6" transition:name="cta-title" transition:animate="slide">
+          Cotizamos<br />
+          <span class="text-gs-crimson">tu proyecto_</span>
+        </h2>
+
+        <a
+          href="/contacto"
+          class="inline-flex items-center gap-3 bg-white text-gs-ink px-8 py-4 rounded-xl font-body text-xl shadow-sm hover:shadow-md transition-all duration-300 w-fit"
+          transition:name="cta-button"
+          transition:animate="slide"
+        >
+          <Send size={32} weight="Filled"  />
+          Comencemos!
+        </a>
+      </div>
     </div>
   </div>
 </section>

@@ -5,10 +5,11 @@ interface Props {
 
 const { title } = Astro.props;
 import "../styles/global.css";
+import ClientRouter from "astro/components/ClientRouter.astro";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,8 +17,14 @@ import "../styles/global.css";
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body class="font-body bg-white text-gs-ink">
     <slot />
+    <script>
+      document.addEventListener("astro:after-swap", () => {
+        window.scrollTo(0, 0);
+      });
+    </script>
   </body>
 </html>

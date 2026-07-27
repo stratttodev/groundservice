@@ -1,0 +1,66 @@
+---
+import { ArrowRightUp, Truck, Gear, Scale, ClipboardList, Drop, Search, ArchiveBox, Bolt, Warehouse, ShieldCheck, Clock, Key } from 'reicon-react';
+
+interface Props {
+  description: string;
+  tags: readonly string[];
+  bg: string;
+  cta?: { label: string; href: string };
+}
+
+const { description, tags, bg, cta } = Astro.props;
+
+const tagIcons: Record<string, any> = {
+  "Maquinaria Pesada": Truck,
+  "Acondicionamiento": Gear,
+  "Alto Tonelaje": Scale,
+  "Pautas Técnicas": ClipboardList,
+  "Sistemas Hidráulicos": Drop,
+  "Diagnóstico": Search,
+  "Stock Certificado": ArchiveBox,
+  "Pernería Pesada": Bolt,
+  "Bodega": Warehouse,
+  "Estándar Minero": ShieldCheck,
+  "Disponibilidad 24/7": Clock,
+  "Ingreso Inmediato": Key,
+};
+---
+
+<div class={`service-card rounded-3xl ${bg} p-8 md:p-16`}>
+  <div class="mb-16">
+    <slot name="icon" />
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+    <div class="md:col-span-8">
+      <p class="font-body text-white/70 text-base leading-relaxed mb-10">
+        {description}
+      </p>
+      {cta && (
+        <a
+          href={cta.href}
+          class="inline-flex items-center gap-2 text-2xl font-body text-white/90 hover:text-white transition-colors duration-300"
+        >
+          {cta.label}
+          <ArrowRightUp size={32} />
+        </a>
+      )}
+    </div>
+
+    <div class="md:col-span-4">
+      <ul class="space-y-4">
+        {tags.map((tag) => {
+          const TagIcon = tagIcons[tag];
+          return (
+            <li class="flex items-center gap-3 text-white/80 font-body">
+              <span class="flex items-center gap-2 px-5 py-2.5 bg-white rounded-xl text-gs-ink text-base font-display">
+                {TagIcon && <TagIcon size={20} weight="Filled" className="text-gs-ink" />}
+                {tag}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</div>

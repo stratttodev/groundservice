@@ -5,39 +5,29 @@ import { ABOUT_CARDS } from "../../lib/constants";
 const iconMap = { ShieldCheck, Timer, ClipboardList };
 ---
 
-<section id="nosotros" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
+<section id="nosotros" class="py-24 bg-white scroll-mt-32">
+  <div class="max-w-7xl mx-auto">
     <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/40 mb-4">Nosotros</p>
 
-    <h2 class="font-display font-bold text-4xl md:text-5xl leading-tight mb-4">
+    <h2 class="font-display font-normal text-4xl md:text-5xl leading-tight mb-4">
       Ingeniería aplicada<br />
       a la <span class="text-gs-crimson">continuidad_</span> en terreno
     </h2>
 
-    <p class="font-body text-gs-ink/70 text-lg max-w-2xl mb-4">
-      En GS elevamos el estándar operativo de la gran minería e industria.
+    <p class="font-body text-gs-ink/50 text-lg max-w-2xl mb-16">
+      No solo intervenimos equipos. Garantizamos que la operación no se detenga.
     </p>
 
-    <p class="font-body text-gs-ink/50 max-w-3xl mb-16 leading-relaxed">
-      Nos posicionamos en el norte de Chile como un partner estratégico dedicado a la certeza técnica:
-      transformamos la mantención y el soporte en un sistema de precisión, seguridad y cumplimiento normativo estricto.
-      No solo intervenimos equipos; garantizamos que la operación no se detenga.
-    </p>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      {ABOUT_CARDS.map((card) => {
+    <div class="grid md:grid-cols-3 gap-6 items-start">
+      {ABOUT_CARDS.map((card, i) => {
         const Icon = iconMap[card.icon];
         return (
-          <div class={`rounded-xl p-8 ${card.bg} ${card.textColor}`}>
-            <Icon size={32} className="mb-6" />
-            <h3 class="font-display font-bold text-xl mb-4">{card.title}</h3>
+          <div class="about-card rounded-xl p-8 bg-stone-100 text-gs-ink transition-all duration-300 cursor-pointer">
+            <Icon size={36} className="mb-6 card-icon" />
+            <h3 class="font-display font-normal text-xl mb-4">{card.title}</h3>
             <div class="flex flex-wrap gap-2">
               {card.tags.map((tag) => (
-                <span class={`text-xs font-body uppercase tracking-wider px-3 py-1 rounded-full border ${
-                  card.textColor === "text-white"
-                    ? "border-white/30 text-white/80"
-                    : "border-gs-ink/10 text-gs-ink/50"
-                }`}>
+                <span class="tag text-xs font-body uppercase tracking-wider px-3 py-1 rounded-full bg-white text-gs-ink/70 border border-gs-ink/10 transition-all duration-300">
                   {tag}
                 </span>
               ))}
@@ -48,3 +38,23 @@ const iconMap = { ShieldCheck, Timer, ClipboardList };
     </div>
   </div>
 </section>
+
+<style>
+  .about-card:hover {
+    background-color: var(--color-gs-crimson);
+    color: white;
+    transform: scale(1.06);
+    box-shadow: 0 25px 60px -10px rgba(255, 7, 58, 0.4);
+  }
+  .about-card:hover .tag {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-gs-ink);
+    background-color: white;
+  }
+  .about-card .card-icon {
+    transition: transform 0.3s ease;
+  }
+  .about-card:hover .card-icon {
+    transform: scale(1.15);
+  }
+</style>

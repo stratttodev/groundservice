@@ -1,0 +1,37 @@
+---
+---
+
+<section class="relative py-24 bg-white overflow-hidden">
+  <div class="absolute inset-0 flex items-center pointer-events-none select-none">
+    <div class="marquee-text whitespace-nowrap font-display font-normal text-[8rem] md:text-[12rem] text-gs-ink/[0.04]">
+      GroundService &middot; Continuidad Operativa &middot; Soporte Técnico &middot; Mantención Preventiva &middot; Disponibilidad Inmediata &middot;&nbsp;
+      GroundService &middot; Continuidad Operativa &middot; Soporte Técnico &middot; Mantención Preventiva &middot; Disponibilidad Inmediata &middot;&nbsp;
+    </div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <div class="rounded-2xl overflow-hidden shadow-2xl bg-gs-ink">
+      <video
+        src="/groundService.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        class="w-full aspect-video object-cover"
+        transition:persist
+      >
+      </video>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-text {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>

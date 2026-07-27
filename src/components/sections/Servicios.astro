@@ -1,47 +1,44 @@
 ---
-import { CheckCircle, TrendUp, Gear, GlobePointer } from "reicon-react";
+import ServiceCard from "../ui/ServiceCard.astro";
+import logoEquipment from "../icons/logoEquipment.astro";
+import logoMaintenance from "../icons/logoMaintenance.astro";
+import logoSupplies from "../icons/logoSupplies.astro";
+import logoRepairs from "../icons/logoRepairs.astro";
 import { SERVICES } from "../../lib/constants";
 
-const iconMap = { CheckCircle, TrendUp, Gear, GlobePointer };
+
+const iconMap = { logoEquipment, logoMaintenance, logoSupplies, logoRepairs };
 ---
 
-<section id="servicios" class="py-24 bg-gs-ink">
-  <div class="max-w-7xl mx-auto px-6">
-    <p class="font-body text-xs uppercase tracking-[0.2em] text-white/30 mb-4">Servicios</p>
+<section id="servicios" class="py-24 bg-white scroll-mt-32">
+  <div class="max-w-7xl mx-auto">
+    <p class="font-body text-xs uppercase tracking-[0.2em] text-gs-ink/30 mb-3">Servicios</p>
 
-    <h2 class="font-display font-bold text-4xl md:text-5xl leading-tight text-white mb-4">
+    <h2 class="font-display font-normal text-4xl md:text-5xl leading-tight text-gs-ink mb-6">
       Ecosistema modular de<br />
       soluciones para <span class="text-gs-crimson">_faena</span>
     </h2>
 
-    <p class="font-body text-white/60 text-lg max-w-2xl mb-4">
-      Estructuramos nuestra oferta en 5 divisiones especializadas.
+    <p class="font-body text-gs-ink/50 max-w-2xl mb-4">
+      Estructuramos nuestra oferta en 4 divisiones especializadas.
     </p>
 
-    <p class="font-body text-white/40 max-w-3xl mb-16 leading-relaxed">
+    <p class="font-body text-gs-ink/30 max-w-3xl mb-20 leading-relaxed">
       Cada unidad opera bajo autonomía técnica y cumplimiento estricto, integrándose según el requerimiento de tu contrato.
     </p>
 
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-col gap-6">
       {SERVICES.map((service) => {
         const Icon = iconMap[service.icon];
         return (
-          <div class="rounded-xl p-8 text-white group">
-            <div class={`w-12 h-12 rounded-lg ${service.bg} flex items-center justify-center mb-6`}>
-              <Icon size={24} />
-            </div>
-            <h3 class="font-display font-bold text-xl mb-3">{service.title}</h3>
-            <p class="font-body text-white/50 text-sm leading-relaxed mb-6">
-              {service.description}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              {service.tags.map((tag) => (
-                <span class="text-xs font-body uppercase tracking-wider px-3 py-1 rounded-full border border-white/10 text-white/40">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+          <ServiceCard
+            description={service.description}
+            tags={service.tags}
+            bg={service.bg}
+            cta={service.cta}
+          >
+            <Icon slot="icon" class="w-80 h-auto" />
+          </ServiceCard>
         );
       })}
     </div>
