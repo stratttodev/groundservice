@@ -1,12 +1,22 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "Mantención, reparación y equipamiento para la gran minería. Estándares de ingeniería que la operación exige.",
+  image = "/ogImage.png",
+} = Astro.props;
 import "../styles/global.css";
 import ClientRouter from "astro/components/ClientRouter.astro";
 import Analytics from "@vercel/analytics/astro";
+import { COMPANY } from "../lib/constants";
+
+const url = Astro.url;
+const ogImage = new URL(image, Astro.site).href;
 ---
 
 <!doctype html>
@@ -16,11 +26,19 @@ import Analytics from "@vercel/analytics/astro";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta property="og:image" content="/ogImage.png" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={COMPANY.name} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/ogImage.png" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <title>{title}</title>
     <ClientRouter />
     <Analytics />
