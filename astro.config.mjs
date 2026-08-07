@@ -13,4 +13,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   adapter: vercel(),
+  redirects: {
+    '/panel': 'https://panel.groundservice.cl:2222',
+    '/webmail': 'http://200.27.112.5/webmail',
+  },
 });
